@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="nl.breinwave.settings"
+        version="0.7.0">
+
+  <name>Settings</name>
+  <keywords>settings,android,ios</keywords>
+  <license>MIT</license>
+  <author>Breinwave</author>
+  
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/settings.js" target="js/settings.js"/>
+
+  <js-module src="www/settings.js" name="settings">
+    <clobbers target="settings" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Settings">
+        <param name="android-package" value="nl.breinwave.plugin.Settings"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/Settings.java" target-dir="src/nl/breinwave/plugin/"/>
+  </platform>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/widget">
+      <feature name="Settings">
+        <param name="ios-package" value="HWPSettings" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/HWPSettings.h" target-dir="SettingsPlugin"/>
+    <source-file src="src/ios/HWPSettings.m" target-dir="SettingsPlugin"/>
+  </platform>
+
+ 
+
+</plugin>
